@@ -1,9 +1,9 @@
 package models
 
 type Section struct {
-	Id        int64  `json:"id" validate:"gte=1"`
-	LayoutId  int64  `json:"layoutId" validate:"gte=1"`
+	Id        int    `json:"id" validate:"gte=1"`
+	LayoutId  int    `json:"layoutId" validate:"gte=1"`
 	Name      string `json:"name" validate:"len=3"`
-	HighSeats bool   `json:"highSeats"`
+	HighSeats bool   `json:"highSeats"` // (e.g. on balcony)
 	Curved    bool   `json:"curved"`
 }

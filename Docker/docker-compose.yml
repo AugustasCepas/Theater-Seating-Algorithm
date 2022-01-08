@@ -1,14 +1,38 @@
 version: '3'
 services:
-  database:
+  postgres:
     image: "postgres" # use latest official postgres version
-    container_name: "postgresql"
+    container_name: "postgres"
     ports:
       - "5432:5432"
     env_file:
-      - database.env # configure postgres
+      - ../db/database.env # configure postgres
+    build:
+      context: ../db
+      dockerfile: ../db/Dockerfile
     volumes:
       - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    networks:
+      - project-network
+  
+  theaterseating:
+    image: "${DOCKER_REGISTRY-}theaterseating"
+    ports:
+      - "8000:8000"
+    build:
+      context: ../src
+      dockerfile: ../Dockerfile
+      args:
+        - github_user=AugustasCepas
+        - github_personal_token=b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACAswj0n0M7I2bWoYkMKN2cFmxiMgMNH0vsuHIqA1qeflQAAAKC46B8QuOgfEAAAAAtzc2gtZWQyNTUxOQAAACAswj0n0M7I2bWoYkMKN2cFmxiMgMNH0vsuHIqA1qeflQAAAEBAICDb5xA2wqxE9AHfzgUS9/RQv4rvx8amjheC5Y9qLCzCPSfQzsjZtahiQwo3ZwWbGIyAw0fS+y4cioDWp5+VAAAAGGF1Z3VzdGFzLmNlcGFzQGdtYWlsLmNvbQECAwQF
+    links:
+      - postgres
+    networks:
+      - project-network
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
+
+networks:
+  project-network:
+    external: false

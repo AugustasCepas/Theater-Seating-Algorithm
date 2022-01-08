@@ -1,12 +1,11 @@
 package models
 
 type Seat struct {
-	Id        int64 `json:"id" validate:"gte=1"`
-	RankId    int   `json:"ranks" validate:"gte=1"`
-	Row       int   `json:"rows" validate:"gte=1"`
-	AisleSeat bool  `json:"aisleSeat"`
-
-	// Label  string  `json:"label" validate:"len=3"`
-	// Value  float64 `json:"value" validate:"gte=0.0001"`
-	// UserId int64   `json:"userId" validate:"gte=1"`
+	Id            int  `json:"id" validate:"gte=1"`
+	Index         int  `json:"index" validate:"gte=1"`  //[1...6]
+	Number        int  `json:"number" validate:"gte=1"` // for example [1,3,5,6,4]
+	RankId        int  `json:"rankId" validate:"gte=1"`
+	RowId         int  `json:"rowId" validate:"gte=1"`
+	ReservationId int  `json:"reservationId" validate:"gte=0"`
+	AisleSeat     bool `json:"aisleSeat"`
 }
