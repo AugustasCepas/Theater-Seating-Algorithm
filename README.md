@@ -47,16 +47,14 @@ RESULT:
 
 ## To install & run:
 ```
-1) cd Theater-Seating-Algorithm/src
-2) go get .
-3) go run *.go
+1) cd Theater-Seating-Algorithm/Docker
+2) Enter git credentials: git username and git private SSH key in docker-compose.yml (required to fetch go modules via git)
+3) docker-compose up
 ```
 
-## To run DB:
+## To access DB:
 ```
-docker-compose up
+psql --host=database --username=admin --dbname=theater_seating_database
 
-psql --host=database --username=unicorn_user --dbname=theater_seating_database
-
-magical_password
+pass1234
 ```

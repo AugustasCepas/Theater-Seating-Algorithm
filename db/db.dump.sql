@@ -18,15 +18,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- TOC entry 3 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: admin
---
-
-CREATE SCHEMA public;
-
-
-ALTER SCHEMA public OWNER TO admin;
 
 --
 -- TOC entry 3364 (class 0 OID 0)

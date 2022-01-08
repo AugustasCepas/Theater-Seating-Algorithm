@@ -7,11 +7,8 @@ services:
       - "5432:5432"
     env_file:
       - ../db/database.env # configure postgres
-    build:
-      context: ../db
-      dockerfile: ../db/Dockerfile
-    volumes:
-      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    volumes: 
+            - ../db/db.dump.sql:/docker-entrypoint-initdb.d/db.dump.sql
     networks:
       - project-network
   
@@ -23,8 +20,8 @@ services:
       context: ../src
       dockerfile: ../Dockerfile
       args:
-        - github_user=AugustasCepas
-        - github_personal_token=b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZWQyNTUxOQAAACAswj0n0M7I2bWoYkMKN2cFmxiMgMNH0vsuHIqA1qeflQAAAKC46B8QuOgfEAAAAAtzc2gtZWQyNTUxOQAAACAswj0n0M7I2bWoYkMKN2cFmxiMgMNH0vsuHIqA1qeflQAAAEBAICDb5xA2wqxE9AHfzgUS9/RQv4rvx8amjheC5Y9qLCzCPSfQzsjZtahiQwo3ZwWbGIyAw0fS+y4cioDWp5+VAAAAGGF1Z3VzdGFzLmNlcGFzQGdtYWlsLmNvbQECAwQF
+        - github_user=
+        - github_personal_token=
     links:
       - postgres
     networks:
