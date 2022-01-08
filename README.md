@@ -1,5 +1,22 @@
 # Theater Seating Algorithm / API
 
+# Admin
+
+## To install & run:
+``` 
+1) Update Theater-Seating-Algorithm/Docker/docker-compose.yml: git_username (can be found through cmd with 'git config --list' call - user.name) and github_personal_token (can be found at C:\Users\*user*\.ssh id_ed25519 or similar named file) - this step is required to fetch go modules via git
+2) Open cmd
+3) call 'cd Docker'
+4) call 'docker-compose up'
+```
+
+## To access DB:
+```
+psql --host=database --username=admin --dbname=theater_seating_database
+
+password: pass1234
+```
+
 # Endpoints:
 ## Reserve Seats
 ```
@@ -25,6 +42,7 @@ RESULT:
     "00000000"
 ]
 ```
+0 - means that seat is not reserved
 
 ## Get User Reserved Seats
 ```
@@ -42,19 +60,9 @@ RESULT:
 ]
 ```
 
-
-# Admin
-
-## To install & run:
+## Things to mention:
 ```
-1) cd Theater-Seating-Algorithm/Docker
-2) Enter git credentials: git username and git private SSH key in docker-compose.yml (required to fetch go modules via git)
-3) docker-compose up
-```
+1) Layouts should have equal amount of seats per row.
 
-## To access DB:
-```
-psql --host=database --username=admin --dbname=theater_seating_database
-
-pass1234
+2) Only GET and POST REST calls implemented for now. UPDATE and DELETE could be added later on if needed.
 ```

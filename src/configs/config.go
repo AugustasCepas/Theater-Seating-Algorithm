@@ -7,7 +7,7 @@ import (
 
 func GetDB() (db *sql.DB, err error) {
 
-	host := "postgres"
+	host := "theaterseatingpostgres"
 	port := "5432"
 	user := "admin"
 	password := "pass1234"
