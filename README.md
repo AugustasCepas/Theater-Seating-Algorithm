@@ -59,10 +59,3 @@ RESULT:
     }
 ]
 ```
-
-## Things to mention:
-```
-1) Layouts should have equal amount of seats per row.
-
-2) Only GET and POST REST calls implemented for now. UPDATE and DELETE could be added later on if needed.
-```
